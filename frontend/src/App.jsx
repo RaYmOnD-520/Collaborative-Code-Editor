@@ -13,7 +13,7 @@ function App() {
     }
 
     ws.current.onmessage = (event) => {
-      console.log(event.data)
+      setCode(event.data)
     }
   }, [])
 
@@ -23,7 +23,12 @@ function App() {
         height="100%"
         defaultLanguage="javascript"
         value={code}
-        onChange={(value) => setCode(value)}
+        onChange={(value) => {
+          setCode(value)
+          if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(value)
+          }
+        }}
         theme="vs-dark"
       />
     </div>
