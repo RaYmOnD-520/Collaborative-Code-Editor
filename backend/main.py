@@ -1,4 +1,4 @@
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
 
 class ConnectionManager:
@@ -24,6 +24,8 @@ class ConnectionManager:
                     await websocket.send_text(message)
 
 
+manager = ConnectionManager()
+
 app = FastAPI()
 
 @app.get("/")
@@ -32,7 +34,10 @@ async def root():
 
 @app.websocket("/ws/{room_id}")
 async def websocket_endpoint(websocket: WebSocket, room_id: str):
-    await websocket.accept()
-    while True:
-        data = await websocket.receive_text()
-        await websocket.send_text(f"echo: {data}")
+    await manager.connect(websocket, room_id)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await manager.broadcast(data, room_id, websocket)
+    except WebSocketDisconnect:
+        manager.disconnect(websocket, room_id)
