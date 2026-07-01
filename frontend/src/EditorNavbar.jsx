@@ -3,7 +3,7 @@ function EditorNavbar({ roomId, userCount, onLeave }) {
     <div style={{ height: '52px', flexShrink: '0', backgroundColor: '#232220', borderBottom: '1px solid #34322d', display: 'flex', alignItems: 'center', padding: '0 16px', fontFamily: "'Inter', system-ui, sans-serif" }}>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '9px' }}>
-        <div style={{ width: '26px', height: '26px', borderRadius: '7px', backgroundColor: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'JetBrains Mono', monospace", fontWeight: '700', fontSize: '13px', color: '#1C1B19' }}>{ }</div>
+        <div style={{ width: '26px', height: '26px', borderRadius: '7px', backgroundColor: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'JetBrains Mono', monospace", fontWeight: '700', fontSize: '13px', color: '#1C1B19' }}>{'{ }'}</div>
         <span style={{ fontSize: '15px', fontWeight: '600', color: '#ECE9E2', letterSpacing: '-0.01em' }}>CodeCollab</span>
       </div>
 
