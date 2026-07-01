@@ -1,1 +1,4 @@
 @import "tailwindcss";
+* { box-sizing: border-box; }
+body { margin: 0; background: #1C1B19; }
+input::placeholder { color: #6b675f; }
